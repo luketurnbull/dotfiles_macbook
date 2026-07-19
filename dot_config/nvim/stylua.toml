@@ -1,0 +1,4 @@
+column_width = 120
+indent_type = "Tabs"
+# Optionally define how many spaces a tab represents for width calculations
+tab_width = 4

@@ -1,0 +1,102 @@
+# ── Environment ────────────────────────────────────────
+# Tells any program that asks to open nvim. Some check EDITOR, some check VISUAL
+export EDITOR="nvim"
+export VISUAL="nvim"
+# XDG base directory spec — standardises where tools store configs/data/cache
+# Technically defaults on macOS but setting explicitly forces lazy tools to comply
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+# Adds ~/.local/bin to PATH so manually installed binaries are found
+export PATH="$HOME/.local/bin:$PATH"
+# Use bat to render man pages with syntax highlighting
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+# Fix formatting issues with groff on macOS
+export MANROFFOPT="-c"
+
+# ── Completions ────────────────────────────────────────
+# Load extended completions from zsh-completions plugin
+fpath=($HOME/.config/zsh/plugins/zsh-completions/src $fpath)
+# Enable zsh tab completion
+autoload -Uz compinit && compinit
+
+# ── Plugins ────────────────────────────────────────────
+# fzf-tab must come AFTER compinit but BEFORE syntax highlighting
+source ~/.config/zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
+source ~/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.config/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+
+# ── fzf-tab ────────────────────────────────────────────
+# Add category label above each completion group
+zstyle ':completion:*:descriptions' format '[%d]'
+# Minimum height of the fzf popup
+zstyle ':fzf-tab:complete:*' fzf-min-height 20
+# Preview directories with eza tree, files with bat
+zstyle ':fzf-tab:complete:cd:*' fzf-preview \
+  'eza --tree --level=2 --icons --color=always $realpath'
+zstyle ':fzf-tab:complete:*:*' fzf-preview '
+  if [ -d $realpath ]; then
+    eza --tree --level=2 --icons --color=always $realpath
+  elif [ -f $realpath ]; then
+    bat --color=always --line-range :200 $realpath
+  fi
+'
+
+# ── History ────────────────────────────────────────────
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt SHARE_HISTORY HIST_IGNORE_ALL_DUPS HIST_REDUCE_BLANKS INC_APPEND_HISTORY
+
+# ── Aliases ────────────────────────────────────────────
+# eza replaces ls with icons and git status
+alias ls="eza --icons --group-directories-first"
+alias ll="eza -la --icons --group-directories-first --git"
+alias la="eza -a --icons --group-directories-first"
+alias lt="eza --tree --level=2 --icons"
+# bat replaces cat with syntax highlighting
+alias cat="bat --paging=never"
+# ripgrep replaces grep
+alias grep="rg"
+# Always use nvim
+alias vim="nvim"
+alias vi="nvim"
+# lazygit shorthand
+alias lg="lazygit"
+# Open fzf file picker and pass result to nvim
+alias inv='nvim $(fzf -m --preview="bat --color=always {}")'
+
+# ── Vi mode ────────────────────────────────────────────
+bindkey -v
+# Restore backspace in insert mode (disabled by vi mode by default)
+bindkey "^?" backward-delete-char
+# Change cursor shape: block in normal, beam in insert
+function zle-keymap-select {
+  if [[ $KEYMAP == vicmd ]]; then
+    echo -ne '\e[2 q'  # block
+  else
+    echo -ne '\e[6 q'  # beam
+  fi
+}
+zle -N zle-keymap-select
+# Reduce Esc key delay to 0.1s
+KEYTIMEOUT=1
+
+# ── FZF ────────────────────────────────────────────────
+# Use fd instead of find — faster and respects .gitignore
+export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+# Show bat preview when using Ctrl+T file search
+export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
+
+# ── Tool init (order matters) ──────────────────────────
+# Starship prompt
+eval "$(starship init zsh)"
+# fnm — Node version manager, auto-switches on cd
+eval "$(fnm env --use-on-cd --shell zsh --version-file-strategy=recursive)"
+# zoxide — smarter cd with frecency
+eval "$(zoxide init zsh)"
+# fzf shell keybindings (Ctrl+T, Alt+C)
+source <(fzf --zsh)
+# Atuin — enhanced shell history (must be LAST — overrides Ctrl+R)
+eval "$(atuin init zsh)"
