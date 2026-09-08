@@ -1,13 +1,11 @@
 start-at-login = true
 
 after-startup-command = [
-  'exec-and-forget /bin/sh -c "sketchybar; open -a Warp; open -a Zen"',
 ]
 
 exec-on-workspace-change = [
   '/bin/bash',
   '-c',
-  'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
 ]
 
 on-focus-changed = [
@@ -92,9 +90,7 @@ alt-shift-9 = [
 alt-tab = 'workspace-back-and-forth'
 
 [[on-window-detected]]
-if.app-id = 'dev.warp.Warp-Stable'
-run = 'move-node-to-workspace 1'
-
-[[on-window-detected]]
-if.app-id = 'app.zen-browser.zen'
-run = 'move-node-to-workspace 2'
+if.app-id="com.mitchellh.ghostty"
+run=[
+  "layout floating",
+]
