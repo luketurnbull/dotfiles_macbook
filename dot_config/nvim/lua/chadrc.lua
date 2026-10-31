@@ -16,11 +16,11 @@ M.base46 = {
 }
 
 -- M.nvdash = { load_on_startup = true }
-M.ui = {
-  transparency = "true",
-     --  tabufline = {
-     --     lazyload = false
-     -- }
-}
+-- M.ui = {
+--   transparency = "true",
+--      --  tabufline = {
+--      --     lazyload = false
+--      -- }
+-- }
 
 return M
