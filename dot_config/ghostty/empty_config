@@ -2,7 +2,7 @@ font-family = "JetBrainsMono Nerd Font"
 font-size = 15
 
 theme = static-noir
-background-opacity = 0.88
+background-opacity = 0.90
 background-blur = true
 
 macos-titlebar-style = hidden
