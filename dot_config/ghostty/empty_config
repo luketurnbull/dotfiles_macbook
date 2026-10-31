@@ -2,15 +2,15 @@ font-family = "JetBrainsMono Nerd Font"
 font-size = 15
 
 theme = static-noir
-background-opacity = 0.90
-background-blur = true
+background-opacity = 0.94
+background-blur = 40
 
 macos-titlebar-style = hidden
 macos-window-buttons = hidden
 macos-titlebar-proxy-icon = hidden
 
-window-padding-x = 15
-window-padding-y = 15
+window-padding-x = 20
+window-padding-y = 20
 
 shell-integration = zsh
 custom-shader = ~/.config/ghostty/shaders/cursor_blaze.glsl
