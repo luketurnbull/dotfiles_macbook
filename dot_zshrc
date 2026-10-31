@@ -2,6 +2,7 @@
 # Tells any program that asks to open nvim. Some check EDITOR, some check VISUAL
 export EDITOR="nvim"
 export VISUAL="nvim"
+
 # XDG base directory spec — standardises where tools store configs/data/cache
 # Technically defaults on macOS but setting explicitly forces lazy tools to comply
 export XDG_CONFIG_HOME="$HOME/.config"

@@ -1,0 +1,86 @@
+{
+    // ── Window ──────────────────────────────────────────────
+    "window.zoomLevel": 1.5,
+    "window.commandCenter": false,
+    "window.menuBarVisibility": "toggle",
+    "window.titleBarStyle": "native",
+    "workbench.browser.showInTitleBar": false,
+
+    // ── Theme ───────────────────────────────────────────────
+    "workbench.colorTheme": "Gruvbox Dark Hard",
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.startupEditor": "none",
+
+    // ── Hide Chrome ─────────────────────────────────────────
+    "workbench.activityBar.location": "hidden",
+    "workbench.statusBar.visible": false,
+    "workbench.editor.showTabs": "none",
+    "workbench.editor.editorActionsLocation": "hidden",
+    "workbench.layoutControl.enabled": false,
+    "workbench.navigationControl.enabled": false,
+    "workbench.panel.showLabels": false,
+
+    // ── Editor ──────────────────────────────────────────────
+    "editor.fontSize": 12,
+    "editor.lineNumbers": "relative",
+    "editor.cursorBlinking": "solid",
+    "editor.formatOnSave": true,
+    "editor.minimap.enabled": false,
+    "editor.glyphMargin": false,
+    "editor.folding": false,
+    "editor.stickyScroll.enabled": false,
+    "editor.scrollbar.vertical": "hidden",
+    "editor.scrollbar.horizontal": false,
+    "editor.renderWhitespace": "none",
+    "editor.renderLineHighlight": "none",
+    "editor.bracketPairColorization.enabled": false,
+    "editor.inlayHints.enabled": "off",
+
+    // ── Zen Mode ────────────────────────────────────────────
+    "zenMode.fullScreen": false,
+    "zenMode.hideStatusBar": true,
+    "zenMode.hideActivityBar": true,
+    "zenMode.showTabs": "none",
+    "zenMode.centerLayout": true,
+    "zenMode.restore": true,
+
+    // ── Git ─────────────────────────────────────────────────
+    "git.decorations.enabled": false,
+    "git.openRepositoryInParentFolders": "never",
+
+    // ── Vim ─────────────────────────────────────────────────
+    "vim.leader": "<space>",
+    "vim.easymotion": true,
+    "vim.hlsearch": true,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.handleKeys": {
+        "<C-a>": false,
+        "<C-f>": false
+    },
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["j", "j"],
+            "after": ["<Esc>"]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        { "before": ["<leader>", "d"], "after": ["d", "d"] },
+        { "before": ["<C-n>"], "commands": [":nohl"] },
+        { "before": ["K"], "commands": ["lineBreakInsert"], "silent": true },
+        { "before": ["<leader>", "e"], "commands": ["workbench.action.toggleSidebarVisibility"] },
+        { "before": ["g", "r"], "commands": ["editor.action.referenceSearch.trigger"] },
+
+        { "before": ["<leader>", "f"], "commands": ["workbench.action.quickOpen"] },
+        { "before": ["<leader>", "g"], "commands": ["workbench.action.findInFiles"] },
+        { "before": ["<leader>", "t"], "commands": ["workbench.action.terminal.toggleTerminal"] },
+        { "before": ["<leader>", "x"], "commands": ["workbench.action.closeActiveEditor"] },
+        { "before": ["<leader>", "w"], "commands": ["workbench.action.files.save"] }
+    ],
+
+    // ── Performance ─────────────────────────────────────────
+    "extensions.experimental.affinity": {
+        "vscodevim.vim": 1
+    }
+}

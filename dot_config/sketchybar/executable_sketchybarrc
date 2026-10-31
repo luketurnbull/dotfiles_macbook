@@ -1,4 +1,0 @@
-#!/usr/bin/env sh
-# Lua entry point — all bar config lives in init.lua and the items/ tree.
-PATH="/opt/homebrew/bin:$PATH"
-exec lua "$CONFIG_DIR/init.lua"
