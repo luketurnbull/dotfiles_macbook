@@ -7,7 +7,7 @@ local M = {}
 
 M.base46 = {
 	theme = "tokyonight",
-  transparency = "true",
+  transparency = true,
 
 	-- hl_override = {
 	-- 	Comment = { italic = true },
