@@ -6,30 +6,30 @@ $character"""
 # ── Username ───────────────────────────────────────────
 [username]
 show_always = true
-style_user = "fg:#7aa2f7 bold"
-style_root = "fg:#f7768e bold"
+style_user = "fg:#7fb2e8 bold"
+style_root = "fg:#ff4d42 bold"
 format = "[$user]($style)"
 
 # ── Hostname ───────────────────────────────────────────
 [hostname]
 ssh_only = false
-style = "fg:#565f89"
+style = "fg:#7d7d7d"
 format = "[@$hostname]($style) "
 
 # ── Directory ──────────────────────────────────────────
 [directory]
-style = "fg:#7dcfff bold"
+style = "fg:#74cfd1 bold"
 truncation_length = 3
 truncate_to_repo = true
 
 # ── Git ────────────────────────────────────────────────
 [git_branch]
 symbol = " "
-style = "fg:#9ece6a"
+style = "fg:#9fd08a"
 format = "[$symbol$branch]($style)"
 
 [git_status]
-style = "fg:#e0af68"
+style = "fg:#e6c15c"
 format = '([ $all_status$ahead_behind]($style))'
 ahead = "⇡${count}"
 behind = "⇣${count}"
@@ -41,5 +41,5 @@ deleted = "✘${count}"
 
 # ── Prompt character ───────────────────────────────────
 [character]
-success_symbol = "[❯](fg:#9ece6a)"
-error_symbol = "[❯](fg:#f7768e)"
+success_symbol = "[❯](fg:#9fd08a)"
+error_symbol = "[❯](fg:#ff4d42)"

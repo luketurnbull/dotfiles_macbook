@@ -1,0 +1,35 @@
+gui:
+  nerdFontsVersion: "3"
+  theme:
+    activeBorderColor:
+      - "#ff3b30"
+      - "bold"
+    inactiveBorderColor:
+      - "#666666"
+    searchingActiveBorderColor:
+      - "#ff3b30"
+      - "bold"
+    optionsTextColor:
+      - "#7fb2e8"
+    selectedLineBgColor:
+      - "#333333"
+    cherryPickedCommitFgColor:
+      - "#7fb2e8"
+    cherryPickedCommitBgColor:
+      - "#d093d0"
+    markedBaseCommitFgColor:
+      - "#7fb2e8"
+    markedBaseCommitBgColor:
+      - "#e6c15c"
+    unstagedChangesColor:
+      - "#ff4d42"
+    defaultFgColor:
+      - "#ededed"
+git:
+  pagers:
+    - colorArg: always
+      pager: delta --dark --paging=never --syntax-theme=ansi
+  autoFetch: true
+  autoRefresh: true
+
+  previewCommandTemplate: "bat --style=full --color=always --theme=ansi {{filename}}"
