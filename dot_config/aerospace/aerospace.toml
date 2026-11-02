@@ -8,10 +8,10 @@ exec-on-workspace-change = [
 [gaps]
 inner.horizontal = 5
 inner.vertical = 5
-outer.left = 5
-outer.right = 5
-outer.bottom = 5
-outer.top = 5
+outer.left = 3
+outer.right = 3
+outer.bottom = 3
+outer.top = 1
 
 [mode.main.binding]
 alt-t = 'exec-and-forget open -na Ghostty'
